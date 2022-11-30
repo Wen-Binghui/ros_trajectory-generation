@@ -1,4 +1,5 @@
 #include <planner.h>
+#include <vector>
 
 BasicPlanner::BasicPlanner(ros::NodeHandle& nh) :
         nh_(nh),
@@ -7,20 +8,11 @@ BasicPlanner::BasicPlanner(ros::NodeHandle& nh) :
         current_velocity_(Eigen::Vector3d::Zero()),
         current_pose_(Eigen::Affine3d::Identity()) {
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //  To Do: Load Trajectory Parameters from file
-    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    //
+    //  Todo: Load Trajectory Parameters from file
     // In this section, you need to use node handler to get max v and max a params
-    //
-    // ~~~~ begin solution
-    //
     //     **** FILL IN HERE ***
-    //
-    // ~~~~ end solution
-    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    //                                 end
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    nh.getParam("/dynamic_params/max_v", max_v_);
+    nh.getParam("/dynamic_params/max_a", max_a_);
 
     // create publisher for RVIZ markers
     pub_markers_ = nh.advertise<visualization_msgs::MarkerArray>("trajectory_markers", 0);
@@ -92,6 +84,19 @@ bool BasicPlanner::planTrajectory(const Eigen::VectorXd& goal_pos,
     // ~~~~ begin solution
     //
     //     **** FILL IN HERE ***
+    std::vector<double> x_list, y_list, z_list;
+    nh_.getParam("/waypoints/x", x_list);
+    nh_.getParam("/waypoints/y", y_list);
+    nh_.getParam("/waypoints/z", z_list);
+    ROS_WARN("NUM: %ld", x_list.size());
+    Eigen::Vector3d middle_pos_;
+    for (int im =0; im<x_list.size(); im++){
+        middle_pos_ << x_list[im], y_list[im], z_list[im];
+        middle.addConstraint(mav_trajectory_generation::derivative_order::POSITION,
+                        middle_pos_);
+        vertices.push_back(middle);
+        middle.removeConstraint(mav_trajectory_generation::derivative_order::POSITION);
+    }
     //
     // ~~~~ end solution
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
