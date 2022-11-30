@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/wbh/code/ros_project/ros_trajectory-generation/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/basic_waypoint_pkg/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/eigen_checks/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/mav_comm/mav_msgs/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/mav_comm/mav_planning_msgs/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/mav_trajectory_generation/mav_trajectory_generation/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/mav_trajectory_generation/mav_trajectory_generation_example/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/mav_trajectory_generation/mav_trajectory_generation_ros/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/mav_trajectory_generation/mav_visualization/include/**",
+        "/home/wbh/code/ros_project/ros_trajectory-generation/src/nlopt/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

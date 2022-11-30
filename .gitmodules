@@ -22,3 +22,6 @@
 [submodule "src/yaml_cpp_catkin"]
 	path = src/yaml_cpp_catkin
 	url = https://github.com/ethz-asl/yaml_cpp_catkin.git
+[submodule "rotors_simulator"]
+	path = rotors_simulator
+	url = https://github.com/ethz-asl/rotors_simulator.git
