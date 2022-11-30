@@ -25,3 +25,6 @@
 [submodule "rotors_simulator"]
 	path = rotors_simulator
 	url = https://github.com/ethz-asl/rotors_simulator.git
+[submodule "src/rotors_simulator"]
+	path = src/rotors_simulator
+	url = https://github.com/ethz-asl/rotors_simulator.git
