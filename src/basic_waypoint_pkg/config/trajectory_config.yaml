@@ -1,0 +1,11 @@
+# sets maximal velocity and acceleration values along the trajectory
+dynamic_params: {
+  max_v: 5.0,
+  max_a: 2.0
+}
+
+waypoints: {
+  # your waypoints here. Think about how to best add any number of waypoints
+  # and the according velocity and acceleration constraints.
+}
+
